@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Travel Recommendation - About Us</title>
+    <link rel="stylesheet" href="travel_recommendation.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="logo">
+        <i class="fas fa-plane" style="color: white; font-size: 24px"></i>
+        TravelBloom
+      </div>
+      <div class="links">
+        <a href="./index.html">Home</a>
+        <a href="./about.html" class="active">About Us</a>
+        <a href="./contact.html">Contact Us</a>
+      </div>
+      <div class="search-container hidden-search">
+        <input type="text" placeholder="Enter a destination or keyword" id="searchInput" />
+        <span class="search-icon">🔍</span>
+        <button onclick="search()">Search</button>
+        <button class="clear" onclick="clearSearch()">Clear</button>
+      </div>
+    </nav>
+    <main class="content-page">
+      <div class="page-overlay">
+        <section class="about-us-section">
+          <h1>ABOUT US</h1>
+          <p>
+            Welcome to Our Company! We are a team of passionate individuals dedicated to providing excellent services/products to our customers. Our
+            mission is to provide the best experience for people traveling to different destinations around the world. Our values include integrity,
+            innovation, customer satisfaction, and teamwork. We believe in putting our customers first and working together to achieve our goals. Feel
+            free to explore our website to learn more about what we offer!
+          </p>
+
+          <div class="team-members">
+            <div class="member-card">
+              <img src="./images/icon.webp" alt="John Doe" />
+              <h4>John Doe</h4>
+              <p>john is responsible for...</p>
+              <span class="role-badge">CEO</span>
+            </div>
+            <div class="member-card">
+              <img src="./images/icon.webp" alt="Celina Thomas" />
+              <h4>Celina Thomas</h4>
+              <p>Celina Thomas is responsible for...</p>
+              <span class="role-badge">Team Lead</span>
+            </div>
+            <div class="member-card">
+              <img src="./images/icon.webp" alt="Mike Tysen" />
+              <h4>Mike Tysen</h4>
+              <p>Mike Tysen is responsible for...</p>
+              <span class="role-badge">Delivery Head</span>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <script src="travel_recommendation.js"></script>
+  </body>
+</html>

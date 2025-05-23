@@ -1,0 +1,47 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Travel Recommendation</title>
+    <link rel="stylesheet" href="travel_recommendation.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="logo">
+        <i class="fas fa-plane" style="color: white; font-size: 24px"></i>
+        TravelBloom
+      </div>
+      <div class="links">
+        <a href="./index.html">Home</a>
+        <a href="./about.html">About Us</a>
+        <a href="./contact.html">Contact Us</a>
+      </div>
+      <div class="search-container">
+        <input type="text" placeholder="Enter a destination or keyword" id="searchInput" />
+        <span class="search-icon">🔍</span>
+        <button onclick="search()">Search</button>
+        <button class="clear" onclick="clearSearch()">Clear</button>
+      </div>
+    </nav>
+    <main class="hero">
+      <div class="social-icons">
+        <a href="#"><img src="./images/twitter.png" alt="Twitter" /></a>
+        <a href="#"><img src="./images/facebook.png" alt="Facebook" /></a>
+        <a href="#"><img src="./images/instagram.png" alt="Instagram" /></a>
+        <a href="#"><img src="./images/youtube.png" alt="YouTube" /></a>
+      </div>
+      <div class="hero-text">
+        <h1>EXPLORE<br />DREAM<br />DESTINATION</h1>
+        <p>
+          It encourages exploration of unfamiliar territories, embracing diverse cultures and landscapes, while pursuing the desired destination that
+          captivates the heart and ignites a sense of wonder.
+        </p>
+        <button>BOOK NOW</button>
+      </div>
+    </main>
+
+    <div class="results-container" id="resultsContainer"></div>
+
+    <script src="travel_recommendation.js"></script>
+  </body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Travel Recommendation - Contact Us</title>
+    <link rel="stylesheet" href="travel_recommendation.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="logo">
+        <i class="fas fa-plane" style="color: white; font-size: 24px"></i>
+        TravelBloom
+      </div>
+      <div class="links">
+        <a href="./index.html">Home</a>
+        <a href="./about.html">About Us</a>
+        <a href="./contact.html" class="active">Contact Us</a>
+      </div>
+      <div class="search-container hidden-search">
+        <input type="text" placeholder="Enter a destination or keyword" id="searchInput" />
+        <span class="search-icon">🔍</span>
+        <button onclick="search()">Search</button>
+        <button class="clear" onclick="clearSearch()">Clear</button>
+      </div>
+    </nav>
+
+    <main class="content-page">
+      <div class="social-icons contact-social-icons">
+        <a href="#"><img src="./images/twitter.png" alt="Twitter" /></a>
+        <a href="#"><img src="./images/facebook.png" alt="Facebook" /></a>
+        <a href="#"><img src="./images/instagram.png" alt="Instagram" /></a>
+        <a href="#"><img src="./images/youtube.png" alt="YouTube" /></a>
+      </div>
+
+      <div class="page-overlay">
+        <div class="contact-content-wrapper">
+          <div class="contact-text-left">
+            <h1>CONTACT US</h1>
+            <p class="get-in-touch">Get in touch</p>
+          </div>
+          <section class="contact-us-section">
+            <form class="contact-form">
+              <input type="text" placeholder="Name" required />
+              <input type="email" placeholder="Email" required />
+              <textarea placeholder="Message" rows="6"></textarea>
+              <button type="submit" class="submit-btn">Submit</button>
+            </form>
+          </section>
+        </div>
+      </div>
+    </main>
+
+    <script src="travel_recommendation.js"></script>
+  </body>
+</html>

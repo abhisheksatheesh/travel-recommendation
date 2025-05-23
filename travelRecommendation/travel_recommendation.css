@@ -1,0 +1,727 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: url("./images/background_home3.jpg") no-repeat center center/cover;
+  color: white;
+  font-family: "Segoe UI", sans-serif;
+  height: 100vh;
+  position: relative;
+  display: flex; /* Make body a flex container */
+  flex-direction: column; /* Stack navbar, main content, and results vertically by default */
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 40px;
+  background: linear-gradient(to right, #0d2d2a, #233a39);
+  color: white;
+  position: fixed; /* Make it fixed to stay on top */
+  width: 100%; /* Take full width */
+  top: 0; /* Align to top */
+  left: 0; /* Align to left */
+  z-index: 1000; /* Ensure it's above other content */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+}
+
+.navbar .logo {
+  display: flex;
+  align-items: center;
+  font-size: 1.5em;
+  font-style: italic;
+  font-weight: bold;
+}
+
+.navbar .logo i {
+  /* Styling for the plane icon */
+  margin-right: 8px;
+}
+
+.navbar .links {
+  flex-grow: 1; /* Allows links to take available space */
+  display: flex;
+  justify-content: center; /* Centers the links */
+}
+
+.navbar .links a {
+  margin: 0 15px;
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  transition: color 0.3s ease; /* Smooth transition for hover */
+}
+
+.navbar .links a:hover,
+.navbar .links a.active {
+  color: #00bcd4; /* A brighter teal/cyan for active/hover */
+}
+
+.navbar .search-container {
+  display: flex;
+  align-items: center;
+  background: white;
+  border-radius: 30px;
+  padding: 5px 10px;
+  width: 410px; /* Adjusted width for a smaller search bar*/
+  justify-content: flex-end; /* Aligns content to the right*/
+  flex-shrink: 0; /* Prevent it from shrinking */
+}
+
+/* Class to hide the search bar on non-home pages */
+.hidden-search {
+  display: none !important; /* !important to override other flex displays */
+}
+
+.navbar input[type="text"] {
+  border: none;
+  outline: none;
+  padding: 8px 12px;
+  border-radius: 30px;
+  width: 100%;
+  flex-grow: 1;
+  font-size: 14px;
+  color: #333;
+}
+
+.navbar button {
+  border: none;
+  padding: 8px 12px;
+  margin-left: 5px;
+  border-radius: 20px;
+  background-color: teal;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+}
+
+.navbar button:hover {
+  background-color: #005656;
+}
+
+.navbar button.clear {
+  background-color: #007070;
+}
+
+.navbar button.clear:hover {
+  background-color: #004d4d;
+}
+
+.navbar .search-icon {
+  margin-left: 10px;
+  color: teal;
+  font-size: 1.2em;
+  cursor: pointer;
+}
+
+/* Main content area for Home page */
+.hero {
+  display: flex;
+  align-items: center;
+  height: calc(100vh - 70px); /* Adjust height to fill viewport below navbar */
+  padding: 0 60px;
+  padding-top: 70px; /* Added: Push content below fixed navbar */
+  position: relative;
+  flex: 1; /* Allow hero to take available space */
+}
+
+/* Main content area for About and Contact pages */
+.content-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 70px); /* Fill screen below navbar */
+  padding-top: 70px; /* Push content down to avoid navbar overlap */
+  position: relative;
+  overflow-y: auto; /* Allow scrolling if content overflows */
+}
+
+/* Overlay for About and Contact pages */
+.page-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6); /* Semi-transparent black overlay */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px; /* Add padding for content inside the overlay */
+}
+
+.hero-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 500px;
+  z-index: 2; /* Ensure text is above background overlay */
+}
+
+.hero-text h1 {
+  font-size: 60px;
+  font-weight: 800;
+  line-height: 1.1;
+  text-transform: uppercase;
+  margin-bottom: 25px;
+  padding-left: 50px;
+  background-color: rgba(0, 0, 0, 0.5);
+  transform: translateX(10px);
+}
+
+.hero-text p {
+  font-size: 16px;
+  line-height: 1.6;
+  padding: 40px;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 8px;
+  margin-bottom: 25px;
+  transform: translateX(10px);
+}
+
+.hero-text button {
+  padding: 12px 24px;
+  background-color: teal;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 16px;
+  width: fit-content;
+  cursor: pointer;
+  transform: translateX(50px);
+  transition: background-color 0.3s ease;
+}
+
+.hero-text button:hover {
+  background-color: #005656;
+}
+
+/* Social Icons (General, for Home page) */
+.social-icons {
+  position: absolute;
+  left: 30px;
+  top: 50%;
+  background: rgba(236, 232, 232, 0.6);
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  z-index: 2; /* Ensure it's above background overlay */
+}
+
+.social-icons img {
+  width: 24px;
+  cursor: pointer;
+}
+
+/* Social Icons specific to Contact page */
+.contact-social-icons {
+  position: absolute;
+  left: 60px; /* Adjust based on image, slightly right of the edge */
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  z-index: 3; /* Ensure it's above the overlay and content wrapper */
+  color: white; /* Icons are white in the image */
+}
+
+/* About Us Section Styles */
+.about-us-section {
+  max-width: 900px;
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 40px;
+  border-radius: 10px;
+  color: #333;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  z-index: 1;
+  margin: 20px;
+  opacity: 0;
+  animation: fadeIn 1s forwards;
+}
+
+.about-us-section h1 {
+  font-size: 3em;
+  margin-bottom: 20px;
+  color: #0a4f5f;
+  text-transform: uppercase;
+}
+
+.about-us-section p {
+  font-size: 1.1em;
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+
+.about-us-section p strong {
+  color: teal;
+}
+
+.team-members {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 40px;
+  flex-wrap: wrap;
+}
+
+.member-card {
+  background-color: white;
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  width: 250px;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.member-card:hover {
+  transform: translateY(-5px);
+}
+
+.member-card img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 15px;
+  border: 3px solid teal;
+}
+
+.member-card h4 {
+  font-size: 1.5em;
+  margin-bottom: 5px;
+  color: #0a4f5f;
+}
+
+.member-card p {
+  font-size: 0.9em;
+  color: #6c757d;
+  margin-bottom: 15px;
+}
+
+.role-badge {
+  background-color: teal;
+  color: white;
+  padding: 8px 15px;
+  border-radius: 20px;
+  font-size: 0.8em;
+  font-weight: 600;
+  display: inline-block;
+}
+
+/* New: Wrapper for Contact Page content (text on left, form on right) */
+.contact-content-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center; /* Vertically center items */
+  width: 100%;
+  max-width: 1000px; /* Adjust max-width as per your preference for the overall block */
+  gap: 80px; /* Space between text and form */
+  padding: 20px;
+  flex-wrap: wrap; /* Allow wrapping on smaller screens */
+}
+
+.contact-text-left {
+  flex: 1; /* Allow it to grow */
+  min-width: 250px; /* Minimum width before wrapping */
+  max-width: 450px; /* Max width for the text block */
+  text-align: left;
+  color: white; /* Text color over the background, as seen in the image */
+  z-index: 2;
+  /* Add padding to move it slightly right, away from social icons */
+  padding-left: 80px; /* Adjusted to visually align with image */
+}
+
+.contact-text-left h1 {
+  font-size: 4em; /* Larger font size for the main heading, matching image */
+  margin-bottom: 10px;
+  color: white;
+  text-transform: uppercase;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* For better readability */
+}
+
+.contact-text-left .get-in-touch {
+  font-size: 1.5em; /* Larger font size for "Get in touch" */
+  margin-bottom: 30px;
+  color: white; /* White text as per image */
+}
+
+/* Contact Us Section Styles (Now primarily for the form on the right) */
+.contact-us-section {
+  flex: 1; /* Allow it to grow */
+  min-width: 300px; /* Minimum width for the form before wrapping */
+  max-width: 500px; /* Max width for the form itself */
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 40px;
+  border-radius: 10px;
+  color: #333;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  z-index: 1;
+  margin: 20px; /* Add some margin for smaller screens */
+  opacity: 0;
+  animation: fadeIn 1s forwards;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: calc(100% - 20px); /* Adjust for padding */
+  padding: 12px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1em;
+  box-sizing: border-box;
+  color: #333;
+  background-color: white;
+}
+
+.contact-form textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.contact-form .submit-btn {
+  background-color: teal;
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  font-size: 1.2em;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 100%;
+}
+
+.contact-form .submit-btn:hover {
+  background-color: #005656;
+}
+
+/* Simple fade-in animation for page content */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* New: Styles for search results */
+.results-container {
+  padding: 40px 60px;
+  background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background for results */
+  color: white;
+  min-height: 200px; /* Ensure it has some height even if empty */
+  display: none; /* Hidden by default */
+  flex-direction: column; /* Stack cards vertically */
+  gap: 30px; /* Space between result cards */
+  align-items: center; /* Center cards horizontally */
+  overflow-y: auto; /* Enable scrolling for results if they overflow */
+  height: calc(100vh - 70px); /* Take up remaining height */
+  padding-top: 70px; /* Account for fixed navbar */
+}
+
+.result-card {
+  background-color: rgba(255, 255, 255, 0.9);
+  color: #333;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  width: 300px; /* Fixed width for each card */
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.result-card:hover {
+  transform: translateY(-5px);
+}
+
+.result-card img {
+  max-width: 100%;
+  height: 200px; /* Fixed height for images */
+  object-fit: cover; /* Cover the area, cropping if necessary */
+  border-radius: 5px;
+  margin-bottom: 15px;
+}
+
+.result-card h3 {
+  font-size: 1.8em;
+  margin-bottom: 10px;
+  color: teal;
+}
+
+.result-card p {
+  font-size: 1em;
+  line-height: 1.6;
+  color: #555;
+}
+
+/* For no results message */
+.no-results {
+  text-align: center;
+  font-size: 1.5em;
+  color: #ccc;
+  width: 100%; /* Make sure it takes full width to center text */
+  padding: 50px 0;
+}
+
+/* New: Flex container for main content and results */
+body.show-results {
+  flex-direction: row; /* Arrange hero and results side-by-side */
+  justify-content: space-between; /* Space them out */
+  align-items: flex-start; /* Align to the top */
+}
+
+body.show-results .hero {
+  flex: 1; /* Allow hero to shrink/grow */
+  height: calc(100vh - 70px); /* Maintain height */
+}
+
+body.show-results .results-container {
+  display: flex; /* Show the results container */
+  width: 350px; /* Adjust width as needed for the right side */
+  flex-shrink: 0; /* Prevent it from shrinking */
+  height: calc(100vh - 70px); /* Match height of hero */
+  position: sticky; /* Keep it in view when scrolling if hero is long */
+  top: 70px; /* Position below fixed navbar */
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .navbar {
+    padding: 10px 20px;
+  }
+
+  .navbar .search-container {
+    width: 200px;
+  }
+
+  .hero-text h1 {
+    font-size: 50px;
+  }
+
+  .hero-text p {
+    font-size: 15px;
+    padding: 30px;
+  }
+
+  .about-us-section {
+    padding: 30px;
+    max-width: 800px;
+  }
+
+  .team-members {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .member-card {
+    width: 70%;
+  }
+
+  /* Contact page specific responsive adjustments */
+  .contact-content-wrapper {
+    flex-direction: column; /* Stack text and form vertically */
+    gap: 30px;
+  }
+
+  .contact-text-left {
+    text-align: center; /* Center text when stacked */
+    padding-left: 0;
+    max-width: 100%; /* Allow it to take full width */
+  }
+
+  .contact-text-left h1 {
+    font-size: 3em; /* Adjust font size for smaller screens */
+  }
+
+  .contact-text-left .get-in-touch {
+    font-size: 1.2em;
+  }
+
+  .contact-us-section {
+    width: 90%; /* Adjust form width */
+    max-width: 500px;
+    margin: 0 auto; /* Center the form */
+  }
+
+  .contact-social-icons {
+    position: static; /* Remove absolute positioning */
+    transform: none;
+    flex-direction: row; /* Display horizontally */
+    justify-content: center;
+    margin-top: 20px; /* Space from navbar */
+    margin-bottom: 20px; /* Space from content */
+    padding: 0 20px;
+    left: auto; /* Reset left */
+  }
+
+  /* Responsive for search results on smaller screens */
+  body.show-results {
+    flex-direction: column; /* Stack hero and results vertically */
+  }
+
+  body.show-results .results-container {
+    width: 100%; /* Take full width */
+    height: auto; /* Adjust height based on content */
+    position: static; /* Remove sticky positioning */
+    padding-top: 20px; /* Adjust padding */
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    flex-direction: column; /* Ensure vertical stacking on small screens */
+  }
+
+  .navbar {
+    flex-direction: column;
+    padding: 15px;
+  }
+
+  .navbar .links {
+    margin-top: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .navbar .links a {
+    margin: 0 10px 10px;
+  }
+
+  .navbar .search-container {
+    margin-top: 15px;
+    width: 90%;
+    justify-content: center;
+  }
+
+  .navbar input[type="text"],
+  .navbar button {
+    padding: 10px 15px;
+    font-size: 16px;
+  }
+
+  .hero,
+  .content-page {
+    height: auto;
+    min-height: calc(100vh - 180px); /* Adjust min-height for stacked navbar */
+    padding-top: 180px; /* Adjust padding-top for stacked navbar */
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  .hero-text {
+    text-align: center;
+    padding: 20px;
+    margin: 0 auto;
+    max-width: 90%;
+  }
+
+  .hero-text h1 {
+    font-size: 40px;
+    padding-left: 0;
+    transform: translateX(0);
+  }
+
+  .hero-text p {
+    padding: 20px;
+    transform: translateX(0);
+  }
+
+  .hero-text button {
+    transform: translateX(0);
+    margin-top: 20px;
+  }
+
+  .social-icons:not(.contact-social-icons) {
+    /* Target only home page social icons for this adjustment */
+    position: static;
+    transform: none;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 30px;
+    padding-bottom: 20px;
+  }
+
+  .about-us-section,
+  .contact-us-section {
+    width: 90%;
+    margin: 20px auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar .logo {
+    font-size: 1.2em;
+  }
+
+  .navbar .links a {
+    font-size: 0.9em;
+  }
+
+  .navbar input[type="text"],
+  .navbar button {
+    font-size: 13px;
+    padding: 6px 10px;
+  }
+
+  .hero-text h1 {
+    font-size: 30px;
+  }
+
+  .hero-text p {
+    font-size: 14px;
+    padding: 15px;
+  }
+
+  .hero-text button {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+
+  .about-us-section h1,
+  .contact-text-left h1 {
+    font-size: 2.5em;
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    font-size: 0.9em;
+    padding: 10px;
+  }
+
+  .contact-form .submit-btn {
+    font-size: 1em;
+    padding: 12px 25px;
+  }
+}
+/*visit button*/
+.visit-button {
+  background-color: teal; /* Matching your existing button style */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+  margin-top: 15px; /* Space above the button */
+  transition: background-color 0.3s ease;
+}
+
+.visit-button:hover {
+  background-color: #005656; /* Darker teal on hover */
+}
